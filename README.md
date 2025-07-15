@@ -21,6 +21,7 @@ This is my personal portfolio website built using **React**, **Tailwind CSS**, a
 Feel free to reach out via the contact form or connect with me on [LinkedIn](https://www.linkedin.com/in/shivani-agarwal-561076260/) or [GitHub](https://github.com/ShivaniAgarwal01).
 
 ## 🌐 Live Demo
+https://shivani-personalportfolio.netlify.app/
 
 
 ---
