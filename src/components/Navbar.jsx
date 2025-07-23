@@ -52,7 +52,7 @@ function Navbar() {
                                   </a>
                                   
                                   <a 
-                                      href="https://drive.google.com/file/d/17xm-5p8c3yart65uWTPFVkxQ5LSr_iDO/view?usp=sharing"
+                                      href="https://drive.google.com/drive/folders/1eDxlVqikCCaytSSr3WZVUbV6neo9fi6Z?usp=sharing"
                                       className='hover:text-yellow-900 rotate-350'
                                       >
                                        <PiReadCvLogoLight />
