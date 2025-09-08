@@ -20,7 +20,7 @@ export default function SkillOrbit() {
         // Set radius to be a percentage of the container's width.
         // 0.4 means the orbit will fill 80% of the container (radius is half the diameter).
         // You can adjust this value to make the orbit larger or smaller.
-        const newRadius = containerWidth * 0.4;
+        const newRadius = containerWidth * 0.33;
         setRadius(newRadius);
       }
     };
@@ -106,7 +106,7 @@ export default function SkillOrbit() {
         <img
           src="/avatar.png"
           alt="Shivani"
-          className="w-40 h-auto object-contain drop-shadow-lg sm:w-48 md:w-52 lg:w-60"
+          className="w-40 h-auto object-contain drop-shadow-lg sm:w-60 md:w-52 lg:w-60"
         />
       </div>
     </div>
