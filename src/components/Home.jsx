@@ -1,27 +1,31 @@
-import React from 'react'
-import SkillOrbit from './SkillOrbit'
+import React from "react"
+import SkillOrbit from "./SkillOrbit"
 
 function Home() {
   return (
-    <>
-    <section id='hero' className='w-full min-h-screen sm:w-full px-5 py-2'>
-        <div className='flex  flex-col-reverse md:flex-row gap-1 md:gap-0 m-5'>
-            {/* left section */}
-            <div className='flex-1 flex items-center justify-center md:justify-start sm:ml-20'>
-                <div className='home-heading text-center md:text-left max-w-xl '>
-                    <p className='text-lg md:text-[40px] sm:text-[40px] mb-1'>Hi! I'm Shivani Agarwal.</p>
-                    <p className='text-md md:text-[21px] sm:text-[30px] max-w-xl'><span className='text-[#f0d9c1]'>Full-stack developer</span> & <span className='text-[#f0d9c1]'>UI/UX designer</span> specializing in React, JavaScript, and modern web technologies. 
-                        I create seamless user experiences from concept to deployment.</p>
-                </div>                
-
-            </div>
-            <div className='flex-1 flex items-center justify-center '>                
-                <SkillOrbit />
-            </div>
+    <section
+      id="hero"
+      className="w-full min-h-screen px-5 py-8 flex flex-col-reverse md:flex-row items-center justify-center gap-5"
+    >
+      {/* Left Section */}
+      <div className="flex-1 flex items-center justify-center md:justify-end">
+        <div className="home-heading text-center md:text-left max-w-xl space-y-5 px-10">
+          <p className="text-2xl sm:text-3xl md:text-4xl font-semibold">
+            Hi! I'm Shivani Agarwal.
+          </p>
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed">
+            <span className="text-[#f0d9c1] font-medium">Full-stack developer</span> &{" "}
+            <span className="text-[#f0d9c1] font-medium">UI/UX designer</span> specializing in React, JavaScript, and modern web technologies. 
+            I create seamless user experiences from concept to deployment.
+          </p>
         </div>
-    </section>
+      </div>
 
-    </>
+      {/* Right Section */}
+      <div className="flex-1 flex items-center justify-center ">
+        <SkillOrbit />
+      </div>
+    </section>
   )
 }
 

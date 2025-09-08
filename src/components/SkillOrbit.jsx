@@ -1,58 +1,77 @@
-import React, { useEffect, useRef ,useState} from 'react';
+import React, { useEffect, useRef, useState } from "react";
 
-const skills = ['React', 'Figma', 'Tailwind', 'CSS', 'JavaScript' ,'C++'];
-// const radius = 100;
-const speed = 0.01;
+// These don't need to be inside the component, as they don't change.
+const SKILLS = ["React", "Figma", "Tailwind", "CSS", "JavaScript", "C++"];
+const ANIMATION_SPEED = 0.01;
 
 export default function SkillOrbit() {
   const containerRef = useRef(null);
   const skillRefs = useRef([]);
   const angleRefs = useRef([]);
-  const [radius, setRadius] = useState(window.innerWidth < 640 ? 100 : 160);
+  // Set a sensible default radius, which will be updated immediately on mount.
+  const [radius, setRadius] = useState(100);
 
-    useEffect(() => {
+  // --- THE CORE FIX ---
+  // This effect now calculates the radius based on the container's actual size.
+  useEffect(() => {
     const handleResize = () => {
-      const newRadius = window.innerWidth < 640 ? 100 : 160;
-      setRadius(newRadius);
+      if (containerRef.current) {
+        const containerWidth = containerRef.current.offsetWidth;
+        // Set radius to be a percentage of the container's width.
+        // 0.4 means the orbit will fill 80% of the container (radius is half the diameter).
+        // You can adjust this value to make the orbit larger or smaller.
+        const newRadius = containerWidth * 0.4;
+        setRadius(newRadius);
+      }
     };
 
-    window.addEventListener('resize', handleResize);
+    // Run once on mount and then on every window resize.
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Initial call to set the radius correctly.
 
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []); // No dependencies needed, it only uses a ref.
 
+  // Animation effect
   useEffect(() => {
-    const total = skills.length;
+    const total = SKILLS.length;
+    angleRefs.current = SKILLS.map((_, i) => (i * (2 * Math.PI)) / total);
+
     let frameId;
-
-    angleRefs.current = skills.map((_, i) => (i * (2 * Math.PI)) / total);
-
     const animate = () => {
-      const centerX = 100;
-      const centerY = 160;
+      const container = containerRef.current;
+      if (!container) {
+        frameId = requestAnimationFrame(animate);
+        return;
+      }
+
+      const centerX = container.offsetWidth / 2;
+      const centerY = container.offsetHeight / 2;
 
       skillRefs.current.forEach((outerEl, i) => {
         if (!outerEl) return;
+        const innerEl = outerEl.querySelector(".inner-skill");
+        if (!innerEl) return;
 
-        const innerEl = outerEl.querySelector('.inner-skill');
-
-        angleRefs.current[i] += speed;
+        angleRefs.current[i] += ANIMATION_SPEED;
         const angle = angleRefs.current[i];
 
         const x = centerX + radius * Math.cos(angle);
         const y = centerY + radius * Math.sin(angle);
-
-        const depth = (Math.sin(angle) + 1) / 2; // depth: 0 to 1
+        const depth = (Math.sin(angle) + 1) / 2;
         const scale = 0.6 + depth * 0.4;
         const zIndex = Math.floor(depth * 100);
 
-        outerEl.style.transform = `translate(${x}px, ${y}px)`;
-        outerEl.style.zIndex = zIndex;
+        const baseW = innerEl.offsetWidth || 40;
+        const baseH = innerEl.offsetHeight || 40;
+        const scaledW = baseW * scale;
+        const scaledH = baseH * scale;
 
-        if (innerEl) {
-          innerEl.style.transform = `scale(${scale})`;
-          innerEl.style.opacity = 0.4 + depth * 0.6;
-        }
+        outerEl.style.left = `${x - scaledW / 2}px`;
+        outerEl.style.top = `${y - scaledH / 2}px`;
+        outerEl.style.zIndex = zIndex;
+        innerEl.style.transform = `scale(${scale})`;
+        innerEl.style.opacity = `${0.45 + depth * 0.55}`;
       });
 
       frameId = requestAnimationFrame(animate);
@@ -60,29 +79,36 @@ export default function SkillOrbit() {
 
     animate();
     return () => cancelAnimationFrame(frameId);
-  }, [radius]);
+  }, [radius]); // Re-trigger animation logic if radius changes.
 
   return (
-    <div className="relative w-full max-w-[400px] h-[400px] mx-auto sm:max-w-[500px] sm:h-[500px]">
-      {/* Skills */}
-      <div ref={containerRef} className="absolute left-13 top-3 md:top-15 md:left-25 w-full h-full">
-        {skills.map((skill, i) => (
-          <div
+    <div
+      ref={containerRef}
+      // The container itself is already responsive thanks to Tailwind!
+      className="relative w-[300px] h-[300px] sm:w-[420px] sm:h-[420px] md:w-[500px] md:h-[500px] mx-auto"
+    >
+      {/* Orbiting bubbles */}
+      {SKILLS.map((skill, i) => (
+        <div
           key={i}
           ref={(el) => (skillRefs.current[i] = el)}
-          className="absolute transition-transform duration-300 ease-linear"
-          >
-            <div className="inner-skill w-17 h-17 sm:w-22 sm:h-22 rounded-full bg-white text-black shadow-md font-semibold text-sm flex items-center justify-center transition-all duration-300">
-              {skill}
-            </div>
+          className="absolute"
+          style={{ left: 0, top: 0, willChange: "left, top, z-index" }}
+        >
+          <div className="inner-skill flex h-14 w-14 items-center justify-center rounded-full bg-white font-semibold text-black shadow-md transition-all sm:h-16 sm:w-16 md:h-20 md:w-20 text-xs sm:text-sm md:text-base">
+            {skill}
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
 
-      {/* Avatar */}
-      <div className="absolute top-[50%] left-[50%] md:top[40%] transform -translate-x-1/2 -translate-y-1/2 z-50">
-        <img src="/avatar.png" alt="Shivani" className="w-100 sm:w-70 h-auto object-contain drop-shadow-lg" />
+      {/* Centered avatar */}
+      <div className="pointer-events-none absolute inset-0 z-50 flex items-center justify-center">
+        <img
+          src="/avatar.png"
+          alt="Shivani"
+          className="w-40 h-auto object-contain drop-shadow-lg sm:w-48 md:w-52 lg:w-60"
+        />
       </div>
     </div>
   );
-}  
+}

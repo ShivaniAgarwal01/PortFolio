@@ -1,13 +1,14 @@
-  import React, { useEffect, useRef } from 'react';
+import React from 'react';
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 
-  const projects = [
+// Data remains separate and clean.
+const projects = [
     {
       title: 'MIND CONNECT',
       description: 'A full-stack platform using React, Node.js, Express, MongoDB, PostgreSQL, and Tailwind CSS to support college students in their mental health journey by providing anonymous access to features such as free counselling (via text messages), journaling for personal reflection, and literary resources on mental well-being.',
       tech: ['Node.js' ,'MongoDB','React', 'JavaScript', 'Tailwind CSS','PostgreSQL','Express',],
       img: '/mindConnect.png',
       github: 'https://github.com/ShivaniAgarwal01/MindConnect',
-      // live: 'https://your-live-link.com/movie',
     },
     {
       title: 'APPLE IPHONE 15 PRO 3D WEBSITE',
@@ -15,7 +16,6 @@
       tech: ['React', 'CSS', 'GSAP' ,'Three.js' ,'JavaScript'],
       img: '/appleWebsite.png',
       github: 'https://github.com/ShivaniAgarwal01/Apple-iPhone-15-Pro-3D-Website',
-      // live: 'https://your-live-link.com/todo',
     },
       {
       title: 'BLINK TAC TOE',
@@ -31,102 +31,102 @@
       tech: ['Django', 'HTML', 'CSS'],
       img: '/cgpa.png',
       github: 'https://github.com/ShivaniAgarwal01/CGPA-Calculator',
-      // live: 'https://blinktactoegame.netlify.app/',
     },
     {
       title: 'PORTFOLIO',
       description: 'A responsive portfolio built with React and Tailwind CSS featuring flip cards, smooth scrolling, and a clean UI to showcase projects and skills.',
       tech: ['React','Tailwind CSS', 'HTML', 'CSS'],
       img: '/portfolio.png',
-      github: 'https://github.com/ShivaniAgarwal01/CGPA-Calculator',
-      live: 'https://blinktactoegame.netlify.app/',
+      github: 'https://github.com/ShivaniAgarwal01/Portfolio',
+      live: 'https://shivaniagarwal.netlify.app/',
     },
+];
 
-  ];
+// IMPROVEMENT 1: Implemented your tech colors idea for a nice visual touch.
+const techColors = {
+  'React': 'border-sky-400 text-sky-400',
+  'Node.js': 'border-green-400 text-green-400',
+  'MongoDB': 'border-green-600 text-green-600',
+  'JavaScript': 'border-yellow-400 text-yellow-400',
+  'Tailwind CSS': 'border-teal-400 text-teal-400',
+  'PostgreSQL': 'border-blue-500 text-blue-500',
+  'Express': 'border-gray-400 text-gray-400',
+  'GSAP': 'border-green-500 text-green-500',
+  'Three.js': 'border-purple-400 text-purple-400',
+  'Django': 'border-green-800 text-green-800',
+  'HTML': 'border-orange-500 text-orange-500',
+  'CSS': 'border-blue-600 text-blue-600',
+  default: 'border-gray-500 text-gray-500',
+};
 
-  // const techColors = {
-  //   GSAP: 'border-green-400',
-  //   React: 'border-blue-400',
-  //   Django: 'border-green-500',
-  //   'Node.js': 'border-lime-400',
-  //   MongoDB: 'border-green-700',
-  //   JavaScript: 'border-yellow-300',
-  //   CSS: 'border-blue-200',
-  //   HTML: 'border-orange-300',
-  //   'Three.js': 'border-purple-400',
-  //   PostgreSQL: 'border-cyan-400',
-  //   Express: 'border-gray-400',
-  //   'Tailwind CSS': 'border-teal-300',
-  // };
+function Projects() {
+  return (
+    <section id='projects' className="w-full py-16 sm:py-20">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h1 className="text-3xl sm:text-4xl uppercase tracking-wider font-bold">Projects</h1>
+        </div>
+        
+        {/* IMPROVEMENT 2: Same fluid grid as the Skills section.
+            It automatically adjusts the number of columns based on screen size.
+        */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 md:gap-10">
+          {projects.map((proj, idx) => (
+            <div
+              key={idx}
+              // Set a max-width to keep cards from getting too wide, but allow them to be flexible.
+              className='w-full max-w-md mx-auto h-[400px] [perspective:1000px]'
+            >
+              {/* IMPROVEMENT 3: Added tabIndex for keyboard accessibility. */}
+              <div tabIndex="0" className="relative w-full h-full [transform-style:preserve-3d] rounded-2xl transition-transform duration-700 focus:outline-none focus:[transform:rotateY(180deg)] hover:[transform:rotateY(180deg)] cursor-pointer">
+                
+                {/* --- FRONT SIDE --- */}
+                <div className='absolute inset-0 [backface-visibility:hidden] rounded-xl bg-white/5 border border-white/20 shadow-lg shadow-black/20 overflow-hidden flex flex-col'>
+                  <div className='relative w-full h-full'>
+                    <img src={proj.img} alt={proj.title} className='w-full h-full object-cover object-top' />
+                    {/* Gradient overlay for text readability */}
+                    <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black/80 to-transparent"></div>
+                  </div>
+                  <div className='absolute bottom-0 left-0 p-4'>
+                    <h3 className='text-white font-bold text-2xl shadow'>{proj.title}</h3>
+                  </div>
+                </div>
 
-  function Projects() {
-    const cardsRef = useRef([]);
-
-    return (
-      <section id='projects' className="w-full px-4 sm:px-8 md:py-12 py-8 min-h-screen mb-20">
-        <div className="heading text-[32px] sm:text-[36px] md:text-[36px] uppercase tracking-wider font-bold text-center">PROJECTS</div>
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3 mt-12 place-items-center">
-            
-              {projects.map((proj, idx) => (
-                <div
-                  key={idx}
-                  // ref={(el) => (cardsRef.current[idx] = el)}
-                    className='w-[90%] h-[400px] sm:w-[350px] [perspective:1000px] '
-                  >
-                 <div className="relative w-full h-full [transform-style:preserve-3d] p-5 rounded-2xl transition-transform duration-700 hover:[transform:rotateY(180deg)] cursor-pointer" >
-                  {/* Front side */}
-
-                  <div className='absolute inset-0 [backface-visibility:hidden] rounded-xl bg-white/10 border border-white/30 shadow-md shadow-white/20 overflow-hidden flex flex-col justify-end'>
-                    <img src={proj.img} alt={proj.title} className='w-full h-full object-cover' />
-                      <div className='py-2 text-center'>
-                        <h3 className='text-white font-semibold text-lg'>{proj.title}</h3>
-                      </div>
+                {/* --- BACK SIDE --- */}
+                {/* IMPROVEMENT 4: Better content layout using Flexbox. */}
+                <div className='absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-xl overflow-hidden border border-white/30 bg-[#1a1a1a] text-white p-5 flex flex-col'>
+                  <h3 className="text-white text-xl font-bold mb-2 flex-shrink-0">{proj.title}</h3>
+                  <p className="text-gray-300 text-md mb-4 flex-grow overflow-y-auto">{proj.description}</p>
+                  
+                  <div className="flex flex-wrap gap-2 mb-4 flex-shrink-0">
+                    {proj.tech.map((tech, i) => {
+                      const colorClass = techColors[tech] || techColors.default;
+                      return (
+                        <span key={i} className={`text-xs px-2 py-1 border rounded-full ${colorClass}`}>
+                          {tech}
+                        </span>
+                      );
+                    })}
                   </div>
 
-                  {/* Back side */}
-                  <div className='absolute w-full h-full [backface-visibility:hidden] rotate-y-180 rounded-xl overflow-auto border border-white/30 bg-gray-900/90 text-white p-4 font-[Arial]'>
-                      <h3 className="text-white text-xl font-semibold mb-2">{proj.title}</h3>
-                      <p className="text-gray-300 text-md mb-5">{proj.description}</p>
-
-                <div className="flex flex-wrap gap-2 mb-5">
-                  {proj.tech.map((tech, i) => (
-                    <span
-                    key={i}
-                    className="bg-white/10 text-sm text-white px-2 py-1 rounded-full"
-                    >
-                    {tech}
-                    </span>
-                    ))}
-                    </div>
-
-                <div className="flex gap-4">
-                  <a
-                  href={proj.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white text-sm underline hover:text-orange-300"
-                  >
-                  GitHub
-                  </a>
-                  {proj.live && (
-                    <a
-                    href={proj.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white text-sm underline hover:text-orange-300"
-                    >
-                    Live
+                  <div className="flex gap-4 mt-auto flex-shrink-0">
+                    <a href={proj.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 text-sm bg-white/10 rounded-md transition-colors hover:bg-white/20">
+                      <FaGithub /> GitHub
                     </a>
+                    {proj.live && (
+                      <a href={proj.live} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 text-sm bg-white/10 rounded-md transition-colors hover:bg-white/20">
+                        <FaExternalLinkAlt /> Live Demo
+                      </a>
                     )}
-                </div>
-                    </div>
-              </div> 
+                  </div>
+                </div> 
               </div>
-            ))
-          }
+            </div>
+          ))}
         </div>
-      </section>
-    );
-  }
+      </div>
+    </section>
+  );
+}
 
-  export default Projects
+export default Projects;
