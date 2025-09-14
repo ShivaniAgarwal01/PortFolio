@@ -142,7 +142,7 @@ function Navbar() {
               <FaLinkedin />
             </a>
             <a
-              href="https://drive.google.com/file/d/17xm-5p8c3yart65uWTPFVkxQ5LSr_iDO/view?usp=sharing"
+              href="https://drive.google.com/drive/folders/1eDxlVqikCCaytSSr3WZVUbV6neo9fi6Z?usp=sharing"
               target="_blank"
               className="hover:text-yellow-500"
             >
