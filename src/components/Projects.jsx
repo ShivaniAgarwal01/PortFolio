@@ -18,6 +18,14 @@ const projects = [
       github: 'https://github.com/ShivaniAgarwal01/MindConnect',
     },
     {
+      title: 'PORTFOLIO',
+      description: 'A responsive portfolio built with React and Tailwind CSS featuring flip cards, smooth scrolling, and a clean UI to showcase projects and skills.',
+      tech: ['React','Tailwind CSS', 'HTML', 'CSS'],
+      img: '/portfolio.png',
+      github: 'https://github.com/ShivaniAgarwal01/Portfolio',
+      live: 'https://shivaniagarwal.netlify.app/',
+    },
+    {
       title: 'APPLE IPHONE 15 PRO 3D WEBSITE',
       description: 'An interactive 3D website showcasing the Apple iPhone 15 Pro, allowing users to explore the device from multiple angles. Implemented responsive design, 3D rendering, and user interaction features using modern web technologies',
       tech: ['React', 'CSS', 'GSAP' ,'Three.js' ,'JavaScript'],
@@ -39,14 +47,7 @@ const projects = [
       img: '/cgpa.png',
       github: 'https://github.com/ShivaniAgarwal01/CGPA-Calculator',
     },
-    {
-      title: 'PORTFOLIO',
-      description: 'A responsive portfolio built with React and Tailwind CSS featuring flip cards, smooth scrolling, and a clean UI to showcase projects and skills.',
-      tech: ['React','Tailwind CSS', 'HTML', 'CSS'],
-      img: '/portfolio.png',
-      github: 'https://github.com/ShivaniAgarwal01/Portfolio',
-      live: 'https://shivaniagarwal.netlify.app/',
-    },
+    
 ];
 
 // IMPROVEMENT 1: Implemented your tech colors idea for a nice visual touch.
