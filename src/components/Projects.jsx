@@ -3,6 +3,13 @@ import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 
 // Data remains separate and clean.
 const projects = [
+   {
+      title: 'ROAD GUARD',
+      description: 'Developed a platform connecting stranded vehicle owners with nearby mechanics and emergency services,enabling quick assistance and enhancing road safety, with features like real-time location tracking, service requests, and secure user authentication',
+      tech: ['Node.js', 'TypeScript', 'React', 'Express', 'PostgreSQL'],
+      img: '/roadGuard.png',
+      github: 'https://github.com/burhanv14/roadgaurd_odoo',
+    },
     {
       title: 'MIND CONNECT',
       description: 'A full-stack platform using React, Node.js, Express, MongoDB, PostgreSQL, and Tailwind CSS to support college students in their mental health journey by providing anonymous access to features such as free counselling (via text messages), journaling for personal reflection, and literary resources on mental well-being.',

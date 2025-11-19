@@ -5,12 +5,18 @@ const skills = [
   { name: 'JavaScript', icon: <img src="java-script.png" alt="JSLogo" className="text-yellow-400" /> },
   { name: 'HTML', icon: <img src="html.png" alt="htmlLogo" className="text-orange-600" /> },
   { name: 'CSS', icon: <img src="css-3.png" alt="cssLogo"  className="text-blue-600" /> },
+  { name: 'Node.js', icon: <img src="nodeJS.png" alt="oopsLogo"  className="text-blue-400" /> },
   { name: 'Tailwind', icon: <img src="tailwind.png" alt="tailwindLogo"  className="text-teal-400" /> },
   { name: 'Figma', icon: <img src="figma.png" alt="figmaLogo" className="text-pink-500" /> },
   { name: 'BootStrap', icon: <img src="bootstrap.png" alt="bootstrapLogo"  className="text-purple-500" /> },
   { name: 'C++', icon: <img src="c++.png" alt="cppLogo"  className="text-blue-400" /> },
   { name: 'DSA', icon: <img src="dsa.png" alt="dsaLogo"  className="text-blue-400" /> },
+  { name: 'MongoDB', icon: <img src="mongoDB.png" alt="oopsLogo"  className="text-blue-400" /> },
+  { name: 'Express', icon: <img src="expressJS.png" alt="oopsLogo"  className="text-blue-400" /> },
+  { name: 'SQL', icon: <img src="sql.png" alt="oopsLogo"  className="text-blue-400" /> },
   { name: 'OOPs', icon: <img src="oops.png" alt="oopsLogo"  className="text-blue-400" /> },
+  { name: 'OS', icon: <img src="os.png" alt="oopsLogo"  className="text-blue-400" /> },
+  
 ];
 
 function Skills() {

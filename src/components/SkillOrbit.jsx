@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 // These don't need to be inside the component, as they don't change.
-const SKILLS = ["React", "Figma", "Tailwind", "CSS", "JavaScript", "C++"];
+const SKILLS = ["React", "SQL", "Node.js", "CSS", "JavaScript", "C++"];
 const ANIMATION_SPEED = 0.01;
 
 export default function SkillOrbit() {
