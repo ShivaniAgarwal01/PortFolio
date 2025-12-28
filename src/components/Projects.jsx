@@ -11,11 +11,12 @@ const projects = [
       github: 'https://github.com/burhanv14/roadgaurd_odoo',
     },
     {
-      title: 'MIND CONNECT',
-      description: 'A full-stack platform using React, Node.js, Express, MongoDB, PostgreSQL, and Tailwind CSS to support college students in their mental health journey by providing anonymous access to features such as free counselling (via text messages), journaling for personal reflection, and literary resources on mental well-being.',
-      tech: ['Node.js' ,'MongoDB','React', 'JavaScript', 'Tailwind CSS','PostgreSQL','Express',],
-      img: '/mindConnect.png',
-      github: 'https://github.com/ShivaniAgarwal01/MindConnect',
+      title: 'PORTFOLIO',
+      description: 'A responsive portfolio built with React and Tailwind CSS featuring flip cards, smooth scrolling, and a clean UI to showcase projects and skills.',
+      tech: ['React','Tailwind CSS','HTML', 'CSS'],
+      img: '/portfolio.png',
+      github: 'https://github.com/ShivaniAgarwal01/Portfolio',
+      live: 'https://shivaniagarwal.netlify.app/',
     },
     {
       title: 'APPLE IPHONE 15 PRO 3D WEBSITE',
