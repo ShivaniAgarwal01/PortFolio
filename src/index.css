@@ -11,12 +11,24 @@ html, body, #root {
   scroll-padding-top: 4rem;
 }
 
-
-
-body{
+body{ 
+  background: radial-gradient(
+      circle at 20% 20%,
+      #1f2937,
+      #0f172a,
+      #020617
+  );
+  color: white;
+  min-height: 100vh;
   background-color:#131313;
-  /* opacity: 80%; */
+  opacity: 80%;
   color: #D19D75;
+  animation: gradientMove 15s ease infinite;
+}
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .btn:hover{
@@ -35,6 +47,17 @@ body{
     /* letter-spacing: 2px; */
     font-weight:550;
     animation: fadeInLeft 5s ease-out;
+}
+
+
+
+
+@keyframes float {
+
+0%{transform:translateY(0)}
+50%{transform:translateY(-10px)}
+100%{transform:translateY(0)}
+
 }
 
 @keyframes fadeInLeft {

@@ -1,20 +1,23 @@
-import ContactForm from "./components/ContactForm"
-import Education from "./components/Education"
-import ExtraCurriculum from "./components/ExtraCurriculum"
+import ContactForm from "./Sections/ContactForm"
+import Education from "./Sections/Education"
+import ExtraCurriculum from "./Sections/ExtraCurriculum"
 import Footer from "./components/Footer"
+import Hero from "./Sections/Hero"
 import Home from "./components/Home"
 import Navbar from "./components/Navbar"
-import Projects from "./components/Projects"
-import Skills from "./components/Skills"
+import Projects from "./Sections/Projects"
+import Skills from "./Sections/Skills"
+import BackgroundParticles from "./components/BackgroundParticles"
 
 function App() {
   return (   
     <>
       <div className="flex flex-col">
       <Navbar />
-      <Home />
+      <Hero />
+      <BackgroundParticles/>
       <Skills />
-      <Education />
+      <Education/>
       <Projects />
       <ExtraCurriculum />
       <ContactForm />
