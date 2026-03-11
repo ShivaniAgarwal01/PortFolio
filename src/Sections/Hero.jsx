@@ -16,12 +16,23 @@ export default function Hero() {
 
   return (
     <section className="min-h-screen flex flex-col justify-center items-center text-center text-white relative">
-      <p className="text-gray-400 tracking-[0.3em]">Hi, I'm</p>
+       <div className="absolute w-[600px] h-[600px] bg-orange-500/10 blur-[160px] rounded-full top-[-200px] left-[-200px]" />
+      <div className="absolute w-[500px] h-[500px] bg-[#D19D75]/10 blur-[140px] rounded-full bottom-[-200px] right-[-200px]" />
+
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+        className="text-gray-400 tracking-[0.35em]"
+      >
+        Hi, I'm
+        </motion.p>
 
       <motion.h1
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
+        viewport={{once:false }}
         className="text-6xl md:text-8xl font-bold mt-3 text-white"
       >
          <span className="bg-gradient-to-r from-orange-400 to-[#D19D75] bg-clip-text text-transparent">
@@ -33,7 +44,7 @@ export default function Hero() {
         key={index}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.6 }}
         className="text-3xl md:text-5xl font-extrabold mt-6 leading-snug"
       >
          <span className="text-white">BUILDING </span>
@@ -46,14 +57,19 @@ export default function Hero() {
         </span>
          </motion.h2>
 
-      <p className="text-gray-400 mt-6 max-w-xl leading-relaxed">
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.6 }}
+        className="text-gray-400 mt-6 max-w-xl leading-relaxed"
+      >
         Full Stack Developer at{" "}
         <span className="text-orange-400 font-semibold">
           LNMIIT Jaipur
         </span>{" "}
         passionate about building scalable applications and
         crafting visually engaging digital experiences.
-      </p>
+      </motion.p>
 
       
 
@@ -76,3 +92,4 @@ export default function Hero() {
     </section>
   );
 }
+

@@ -13,9 +13,9 @@ function App() {
   return (   
     <>
       <div className="flex flex-col">
+        <BackgroundParticles/>
       <Navbar />
       <Hero />
-      <BackgroundParticles/>
       <Skills />
       <Education/>
       <Projects />
