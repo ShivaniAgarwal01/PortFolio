@@ -43,7 +43,7 @@ function Footer() {
 
           <motion.a
             whileHover={{ scale: 1.3 }}
-            href="https://drive.google.com/file/d/17xm-5p8c3yart65uWTPFVkxQ5LSr_iDO/view"
+            href="https://drive.google.com/file/d/1jVbLy2vljMdzbCXEbXnPlzN9on2CiRUB/view?usp=drive_link"
             className="hover:text-yellow-400 transition"
           >
             <PiReadCvLogoLight />
