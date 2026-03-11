@@ -14,6 +14,23 @@ const projects = [
     github: "https://github.com/burhanv14/roadgaurd_odoo",
   },
   {
+  title: "LIVEPOLL - REAL-TIME CLASSROOM ENGAGEMENT PLATFORM",
+  description:
+    "Developed a real-time polling system that enables teachers to create timed polls and track live voting results while students participate instantly. Implemented WebSocket-based communication, countdown timers, live chat, participant management, and poll history for seamless classroom interaction.",
+  tech: ["React", "TypeScript", "Tailwind CSS", "Node.js", "Express.js", "Socket.io", "MongoDB"],
+  img: "/livepoll.png",
+  github: "https://github.com/ShivaniAgarwal01/live-poll-system",
+  live: "https://live-poll-system-ui.onrender.com"
+},
+  {
+  title: "GRIVAX - AI POWERED EDUCATION PLATFORM",
+  description:
+    "A next-generation learning platform that dynamically generates courses and quizzes to help users prepare for exams efficiently. Built with modern UI/UX, multi-language support (English/Hindi), theme switching, and smooth animations to deliver a seamless and responsive learning experience.",
+  tech: ["Next.js", "Tailwind CSS", "Framer Motion", "i18next", "JavaScript"],
+  img: "/grivax.png",
+  github: "https://github.com/burhanv14/grivax.gen",
+},
+  {
     title: "PORTFOLIO",
     description:
       "A responsive portfolio built with React and Tailwind CSS featuring flip cards, smooth scrolling, and a clean UI to showcase projects and skills.",
@@ -104,7 +121,7 @@ function Projects() {
               whileInView="visible"
               transition={{ duration: 0.8 }}
               viewport={{ once: false }}
-              className="w-full max-w-md mx-auto h-[400px] [perspective:1000px]"
+              className="w-full max-w-md mx-auto h-[400px] [perspective:1000px] group"
             >
               {/* //<div key={idx} */}
               {/* //   // Set a max-width to keep cards from getting too wide, but allow them to be flexible. */}
@@ -117,12 +134,12 @@ function Projects() {
                 className="relative w-full h-full [transform-style:preserve-3d] rounded-2xl transition-transform duration-700 focus:outline-none focus:[transform:rotateY(180deg)] hover:[transform:rotateY(180deg)] cursor-pointer"
               >
                 {/* --- FRONT SIDE --- */}
-                <div className="absolute inset-0 [backface-visibility:hidden] rounded-xl bg-white/5 border border-white/20 shadow-lg shadow-black/20 overflow-hidden flex flex-col">
+                <div className="absolute inset-0 [backface-visibility:hidden] rounded-xl bg-white/5 border border-white/20 shadow-lg shadow-black/20 overflow-hidden flex flex-col transition-all duration-500 group-hover:shadow-orange-500/30" >
                   <div className="relative w-full h-full">
                     <img
                       src={proj.img}
                       alt={proj.title}
-                      className="w-full h-full object-cover object-top"
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
                     />
                     {/* Gradient overlay for text readability */}
                     <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black/80 to-transparent"></div>
